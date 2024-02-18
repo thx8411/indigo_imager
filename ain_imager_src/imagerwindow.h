@@ -62,6 +62,7 @@ class QIndigoServers;
 #include <QProcess>
 #include "focusgraph.h"
 #include "sequence_editor.h"
+#include "skymap.h"
 #include "syncutils.h"
 #include "customobjectmodel.h"
 #include "qaddcustomobject.h"
@@ -824,6 +825,8 @@ private:
 
 	SequenceEditor *m_sequence_editor;
 
+        SkyMap *m_map_viewer;
+
 	QString m_image_key;
 	QString m_guider_key;
 
@@ -858,6 +861,7 @@ private:
 	void create_guider_tab(QFrame *guider_frame);
 	void create_telescope_tab(QFrame *solver_frame);
 	void create_solver_tab(QFrame *telescope_frame);
+        void create_map_tab(QFrame *map_frame);
 
 	void change_config_agent_load(const char *agent, const char *config, bool unload) const;
 	void change_config_agent_save(const char *agent, const char *config, bool autosave) const;

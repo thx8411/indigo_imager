@@ -377,6 +377,10 @@ ImagerWindow::ImagerWindow(QWidget *parent) : QMainWindow(parent) {
 	m_tools_tabbar->addTab(solver_frame, "Sol&ver");
 	create_solver_tab(solver_frame);
 
+        QFrame *map_frame = new QFrame;
+        m_tools_tabbar->addTab(map_frame, "Sky&map");
+        create_map_tab(map_frame);
+
 	/*
 	QFrame *sequence_frame = new QFrame;
 	tools_tabbar->addTab(sequence_frame, "&Sequence");
@@ -407,6 +411,9 @@ ImagerWindow::ImagerWindow(QWidget *parent) : QMainWindow(parent) {
 	m_guider_viewer->setVisible(false);
 
 	m_sequence_editor = new SequenceEditor();
+
+        // Map viewer
+        m_map_viewer = new SkyMap();
 
 	QSplitter* hSplitter = new QSplitter;
 	hSplitter->addWidget(tools_panel);
@@ -677,7 +684,8 @@ enum {
 	FOCUSER_TAB = 2,
 	GUIDER_TAB = 3,
 	TELESCOPE_TAB = 4,
-	SOLVER_TAB = 5
+	SOLVER_TAB = 5,
+        MAP_TAB = 6
 };
 
 void ImagerWindow::on_tab_changed(int index) {
@@ -688,6 +696,7 @@ void ImagerWindow::on_tab_changed(int index) {
 			m_imager_viewer->setVisible(true);
 			m_guider_viewer->setVisible(false);
 			m_sequence_editor->setVisible(false);
+                        m_map_viewer->setVisible(false);
 		}
 
 		if (index == TELESCOPE_TAB) m_imager_viewer->showWCS(true);
@@ -699,6 +708,7 @@ void ImagerWindow::on_tab_changed(int index) {
 			m_guider_viewer->setVisible(false);
 			m_imager_viewer->setVisible(false);
 			m_sequence_editor->setVisible(true);
+                        m_map_viewer->setVisible(false);
 		}
 	} else if (index == GUIDER_TAB) {
 		if (m_visible_viewer != m_guider_viewer) {
@@ -707,11 +717,22 @@ void ImagerWindow::on_tab_changed(int index) {
 			m_guider_viewer->setVisible(true);
 			m_imager_viewer->setVisible(false);
 			m_sequence_editor->setVisible(false);
+                        m_map_viewer->setVisible(false);
 		}
 	} else if (index == SOLVER_TAB) {
 		QString solver_source = m_solver_source_select1->currentText();
 		show_selected_preview_in_solver_tab(solver_source);
-	}
+	} else if (index == MAP_TAB) {
+                if (m_visible_viewer != m_map_viewer) {
+                        m_visible_viewer->parentWidget()->layout()->replaceWidget(m_visible_viewer, m_map_viewer);
+                        m_visible_viewer = m_map_viewer;
+                        m_guider_viewer->setVisible(false);
+                        m_imager_viewer->setVisible(false);
+                        m_sequence_editor->setVisible(false);
+                        m_map_viewer->setVisible(true);
+                }
+        }
+
 	if (index == FOCUSER_TAB) {
 		m_imager_viewer->showSelection(true);
 		m_imager_viewer->showReference(false);

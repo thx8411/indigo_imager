@@ -35,6 +35,8 @@ SOURCES += \
 	customobjectmodel.cpp \
 	qaddcustomobject.cpp \
 	solver_tab.cpp \
+        skymap.cpp \
+	map_tab.cpp \
 	imagerwindow.cpp \
 	qindigoservice.cpp \
 	indigoclient.cpp \
@@ -131,6 +133,7 @@ HEADERS += \
 	widget_state.h \
 	blobpreview.h \
 	sequence_editor.h \
+        skymap.h \
 	syncutils.h \
 	qconfigdialog.h \
 	../common_src/version.h \
