@@ -35,7 +35,7 @@ SOURCES += \
 	customobjectmodel.cpp \
 	qaddcustomobject.cpp \
 	solver_tab.cpp \
-        skymap.cpp \
+        qskymap.cpp \
 	map_tab.cpp \
 	imagerwindow.cpp \
 	qindigoservice.cpp \
@@ -133,7 +133,7 @@ HEADERS += \
 	widget_state.h \
 	blobpreview.h \
 	sequence_editor.h \
-        skymap.h \
+        qskymap.h \
 	syncutils.h \
 	qconfigdialog.h \
 	../common_src/version.h \

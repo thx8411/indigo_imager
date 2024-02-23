@@ -16,24 +16,14 @@
 // NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef _SKYMAP_H
-#define _SKYMAP_H
 
 #include <QtWidgets>
 
-class SkyMap : public QWidget {
-	Q_OBJECT
+#include "qskymap.h"
 
-public:
-	SkyMap();
-	~SkyMap();
+QSkyMap::QSkyMap() {
+}
 
-private:
 
-signals:
-
-public slots:
-
-};
-
-#endif /* _SKYMAP_H */
+QSkyMap::~QSkyMap() {
+}

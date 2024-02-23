@@ -413,7 +413,7 @@ ImagerWindow::ImagerWindow(QWidget *parent) : QMainWindow(parent) {
 	m_sequence_editor = new SequenceEditor();
 
         // Map viewer
-        m_map_viewer = new SkyMap();
+        m_map_viewer = new QSkyMap();
 
 	QSplitter* hSplitter = new QSplitter;
 	hSplitter->addWidget(tools_panel);

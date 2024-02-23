@@ -62,7 +62,7 @@ class QIndigoServers;
 #include <QProcess>
 #include "focusgraph.h"
 #include "sequence_editor.h"
-#include "skymap.h"
+#include "qskymap.h"
 #include "syncutils.h"
 #include "customobjectmodel.h"
 #include "qaddcustomobject.h"
@@ -825,7 +825,7 @@ private:
 
 	SequenceEditor *m_sequence_editor;
 
-        SkyMap *m_map_viewer;
+        QSkyMap *m_map_viewer;
 
 	QString m_image_key;
 	QString m_guider_key;
